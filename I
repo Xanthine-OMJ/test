@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, const char * argv[]) {
+    double x;
+    int n;
+    int num;
+
+    int p[100];
+    
+    while(scanf("%lf %d",&x,&n) != EOF){
+        num = (int)x;
+        x -= num;
+        for(int i = 0;i<n+1;i++){
+            p[i] = (int)(x*pow(10,i+1))%10;
+        }
+        if(p[n]>=5){
+            p[n-1]+=1;
+        }
+        printf("%d.",num);
+        for(int i = 0;i<n;i++){
+            printf("%d",p[i]);
+        }
+        printf("\n");
+        
+        
+    }
+    return 0;
+}
