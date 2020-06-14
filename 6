@@ -1,0 +1,63 @@
+//
+//  main.c
+//  6
+//
+//  Created by Xanthine on 2020/6/14.
+//  Copyright © 2020 Xanthine. All rights reserved.
+//
+
+#include <stdio.h>
+void sortBubble(int *p,int *q,int t,int n);
+void swap(int *a,int *b);
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    int m,n;
+    int p[5000];
+    int q[5000];
+    scanf("%d %d",&n,&m);
+    
+    for(int i = 0;i<m;i++){
+        scanf("%d %d",&p[i],&q[i]);
+    }
+    sortBubble(p,q,m,n);
+    return 0;
+}
+    
+void sortBubble(int *p,int *q,int t,int n){
+    int c[t];
+    int d[t];
+    int count = 0;
+    int price = 0;
+    int a,b;
+    
+    for(int j = t-1;j>-1;j--){
+        for(int i = 0;i<t;i++){
+                while(*(p+i)<*(p+i+1)){
+                    swap((p+i), (p+i+1));
+                    swap((q+i), (q+i+1));
+                }
+            }
+        c[count] = *(p+j);
+        d[count] = *(q+j);
+        count++;
+    }
+    
+    for(int num = n,i = 0;num-d[i]>0;++i){
+        
+        num -= d[i];
+        a=num;
+        price += c[i]*d[i];
+        b=i;
+    }
+    price += c[b+1]*a;
+    printf("%d\n",price);
+}
+
+ void swap(int *a,int *b){
+    int t;
+    t=*a;
+    *a=*b;
+    *b=t;
+}
+
